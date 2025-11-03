@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://x0cwqxrq1vet"]
+
+[ext_resource type="Script" uid="uid://dxv2yssf6nx4s" path="res://combat.gd" id="1_ga4lu"]
+[ext_resource type="AudioStream" uid="uid://bjsyp4j4vuy8f" path="res://bathroom.ogg" id="2_u30h6"]
+[ext_resource type="PackedScene" uid="uid://bsnupbvi8vklw" path="res://player.tscn" id="3_fvoc2"]
+[ext_resource type="PackedScene" uid="uid://xmcqpjhhusvi" path="res://enemy(poop).tscn" id="4_v7dqf"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ga4lu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_u30h6")
+volume_db = -12.404
+autoplay = true
+parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 56
+text = "ATTACK"
+
+[node name="Player" parent="CanvasLayer/Control" instance=ExtResource("3_fvoc2")]
+position = Vector2(273, 463)
+
+[node name="enemy(poop)" parent="CanvasLayer/Control" instance=ExtResource("4_v7dqf")]
+position = Vector2(873, 175)
+
+[node name="FightOver" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="FightOver"]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.3
+anchor_right = 0.8
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VictoryText" type="Label" parent="FightOver/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Victory!!!"
+horizontal_alignment = 1
+
+[node name="DefeatText" type="Label" parent="FightOver/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Defeat..."
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://xmcqpjhhusvi"]
+
+[ext_resource type="Texture2D" uid="uid://cbl7khxjrrsy" path="res://poopguy.png" id="1_tmepl"]
+[ext_resource type="Script" uid="uid://fa0sn76no8q0" path="res://enemy(poop).gd" id="2_abaej"]
+
+[node name="enemy(poop)" type="Sprite2D"]
+texture = ExtResource("1_tmepl")
+script = ExtResource("2_abaej")
+
+[node name="EnemyHP" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = -0.3
+anchor_top = 0.4
+anchor_right = 0.3
+anchor_bottom = 0.43
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "POOP 100/100"
+horizontal_alignment = 1
