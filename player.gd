@@ -18,5 +18,6 @@ func recieve_attack(attack):
 	HPLabel.text = str(current_hp) + "|" + str(max_hp)
 	
 func spell_cast(mana):
-	current_mana -= current_mana - mana
+	current_mana -= mana
+	MPLabel.text = str(current_mana) + "|" + str(max_mana)
 	

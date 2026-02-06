@@ -81,9 +81,13 @@ func _on_cock_bending_pressed() -> void:
 
 
 func _on_healing_brap_pressed() -> void:
-	if player.current_mana >= 8 :
+	if player.current_mana >= 8:
 		player.current_hp += 20
+		if player.current_hp > player.max_hp :
+			player.current_hp = player.max_hp
+		player.HPLabel.text = str(player.current_hp) + "|" + str(player.max_hp)
 		player.spell_cast(8)
+		player_turn = false
 	attack_button.visible = true
 	block_button.visible = true
 	spell_button.visible = true
