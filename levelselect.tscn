@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://daypmex1kd2jq"]
+[gd_scene load_steps=6 format=3 uid="uid://daypmex1kd2jq"]
 
 [ext_resource type="Texture2D" uid="uid://cj0mpdkxnfgxx" path="res://shipplace.png" id="1_pfsfy"]
-[ext_resource type="PackedScene" uid="uid://bsnupbvi8vklw" path="res://player.tscn" id="2_8h15g"]
+[ext_resource type="Script" uid="uid://bgjjtj8poatxa" path="res://ship_place.gd" id="2_eo15b"]
+[ext_resource type="Script" uid="uid://bh1iq11hhcrbx" path="res://character_body_2d.gd" id="3_aa143"]
+[ext_resource type="Texture2D" uid="uid://b5y0hkbtrfsel" path="res://graggle.png" id="3_eo15b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_naiid"]
+radius = 66.0
+height = 296.0
 
 [node name="Levelselect" type="Node2D"]
 
@@ -13,11 +19,22 @@ anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="Shipplace" type="Sprite2D" parent="CanvasLayer/Control"]
+[node name="ShipPlace" type="Sprite2D" parent="CanvasLayer/Control"]
 z_index = -1
 position = Vector2(576, 324)
 texture = ExtResource("1_pfsfy")
+script = ExtResource("2_eo15b")
 
-[node name="Player" parent="CanvasLayer/Control" instance=ExtResource("2_8h15g")]
-position = Vector2(537, 496.00003)
-scale = Vector2(0.6, 0.6)
+[node name="overworldplayer" type="CharacterBody2D" parent="CanvasLayer/Control"]
+position = Vector2(526, 531)
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+floor_stop_on_slope = false
+script = ExtResource("3_aa143")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control/overworldplayer"]
+position = Vector2(28, -6)
+texture = ExtResource("3_eo15b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/overworldplayer"]
+shape = SubResource("CapsuleShape2D_naiid")

@@ -8,9 +8,15 @@ var max_mana = 40
 var current_mana = max_mana
 
 @onready var HPLabel = $PlayerHP
+@onready var MPLabel = $PlayerMP
 	
 func recieve_attack(attack):
-	current_hp -= attack - defense
-	HPLabel.text = "Graggle
-	" + str(current_hp) + "/" + str(max_hp)
+	if attack - defense < 0 :
+		pass
+	else :
+		current_hp -= attack - defense
+	HPLabel.text = str(current_hp) + "|" + str(max_hp)
+	
+func spell_cast(mana):
+	current_mana -= current_mana - mana
 	

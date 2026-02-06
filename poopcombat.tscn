@@ -25,17 +25,78 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
+[node name="AttackButton" type="Button" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
+anchor_left = 0.45
 anchor_top = 0.7
-anchor_right = 0.9
+anchor_right = 0.7
 anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 56
 text = "ATTACK"
+
+[node name="BlockButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.79
+grow_horizontal = 2
+grow_vertical = 2
+text = "BLOCK"
+
+[node name="SpellButton" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.8
+anchor_right = 0.9
+anchor_bottom = 0.9
+text = "SPELLS"
+
+[node name="Fireball" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.34
+anchor_right = 0.44
+anchor_bottom = 0.44
+text = "FIREBALL"
+
+[node name="CockBending" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.34
+anchor_right = 0.6
+anchor_bottom = 0.44
+text = "COCK BENDING"
+
+[node name="HealingBrap" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.48
+anchor_right = 0.44
+anchor_bottom = 0.58
+text = "HEALING BRAP"
+
+[node name="SmelyMonkleyBalls" type="Button" parent="CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.48
+anchor_right = 0.6
+anchor_bottom = 0.58
+text = "SMELY MONKLEY BALLS"
+autowrap_mode = 2
 
 [node name="Player" parent="CanvasLayer/Control" instance=ExtResource("3_i80n2")]
 position = Vector2(280, 459)
@@ -49,6 +110,7 @@ position = Vector2(576, 324)
 texture = ExtResource("5_p5pnd")
 
 [node name="FightOver" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="Control" type="Control" parent="FightOver"]
 layout_mode = 3
@@ -58,6 +120,7 @@ anchor_right = 0.8
 anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VictoryText" type="Label" parent="FightOver/Control"]
 visible = false
@@ -83,4 +146,10 @@ theme_override_font_sizes/font_size = 80
 text = "Defeat..."
 horizontal_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/AttackButton" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/BlockButton" to="." method="_on_block_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/SpellButton" to="." method="_on_spell_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Fireball" to="." method="_on_fireball_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/CockBending" to="." method="_on_cock_bending_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HealingBrap" to="." method="_on_healing_brap_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/SmelyMonkleyBalls" to="." method="_on_smely_monkley_balls_pressed"]
