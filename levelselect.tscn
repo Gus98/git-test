@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://daypmex1kd2jq"]
+
+[ext_resource type="Texture2D" uid="uid://cj0mpdkxnfgxx" path="res://shipplace.png" id="1_pfsfy"]
+[ext_resource type="PackedScene" uid="uid://bsnupbvi8vklw" path="res://player.tscn" id="2_8h15g"]
+
+[node name="Levelselect" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Shipplace" type="Sprite2D" parent="CanvasLayer/Control"]
+z_index = -1
+position = Vector2(576, 324)
+texture = ExtResource("1_pfsfy")
+
+[node name="Player" parent="CanvasLayer/Control" instance=ExtResource("2_8h15g")]
+position = Vector2(537, 496.00003)
+scale = Vector2(0.6, 0.6)
